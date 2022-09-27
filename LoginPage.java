@@ -25,6 +25,8 @@ public class LoginPage implements ActionListener {
 
     JCheckBox check = new JCheckBox("I'm Not a Robot");
 
+    // this is testing push
+
 
     ImageIcon image = new ImageIcon("bglogin.png");
 
