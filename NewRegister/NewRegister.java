@@ -1,5 +1,8 @@
 package NewRegister;
-import Login.*;
+
+import Login.IdPass;
+import Login.LoginPage;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class NewRegister extends JFrame implements ActionListener {
 
-    JButton button ;
+    JButton button;
     JLabel bg;
     ImageIcon img = new ImageIcon("NewRegister/newregisterimg.png");
     JButton loginButton;

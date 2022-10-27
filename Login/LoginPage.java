@@ -1,11 +1,14 @@
 package Login;
+
+import HomeScreen.HomeScreen;
+import NewRegister.NewRegister;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
-import HomeScreen.HomeScreen;
-import NewRegister.*;
+
 public class LoginPage implements ActionListener {
 
     JFrame frame = new JFrame();
