@@ -2,8 +2,9 @@ package Main;
 
 import java.util.Scanner;
 import Login.*;
-import ThankYou.Assets.*;
-import ThankYou.Assets.ThankYouScreen;
+import ThankYou.ThankYouScreen;
+
+import OthersScreen.OthersScreen;
 
 public class Main {
 
@@ -11,9 +12,11 @@ public class Main {
 
 //         new NewRegister();
 //         new LoginPage();
-            new ThankYouScreen();
+//            new ThankYouScreen();
 //        IdPass idPass = new IdPass();
 //        LoginPage login = new LoginPage(idPass.getLoginInfo());
+
+        new OthersScreen();
 
     }
 }

@@ -1,5 +1,6 @@
 package HomeScreen;
 import BalanceScreen.BalanceScreen;
+import OthersScreen.OthersScreen;
 import javax.swing.*;
 import HistoryScreen.HistoryScreen;
 import TransferScreen.TransferScreen;
@@ -149,6 +150,10 @@ public class HomeScreen extends JFrame implements ActionListener, MouseListener 
         if (e.getSource() == balance){
             System.out.println("DO You Want to Check Balance");
             new BalanceScreen();
+        }
+        if (e.getSource() == others){
+            System.out.println("DO You Want to Check Balance");
+            new OthersScreen();
         }
     }
 
