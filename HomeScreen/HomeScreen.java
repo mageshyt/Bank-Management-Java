@@ -1,13 +1,12 @@
 package HomeScreen;
 
+
 import BalanceScreen.BalanceScreen;
-<<<<<<< HEAD
-=======
-import OthersScreen.OthersScreen;
-import javax.swing.*;
->>>>>>> b9bc5cc764ffbcf12b7dcb306d1925938eb5e5f8
 import HistoryScreen.HistoryScreen;
+import OthersScreen.OthersScreen;
 import TransferScreen.TransferScreen;
+
+import javax.swing.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -142,7 +141,7 @@ public class HomeScreen extends JFrame implements ActionListener, MouseListener 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == transfer){
             System.out.println("DO You Want to Transfer Money");
-            new TransferScreen();
+            new TransferScreen ();
         }
         if (e.getSource() == withdraw){
             System.out.println("DO You Want to Withdraw Money");
@@ -150,15 +149,15 @@ public class HomeScreen extends JFrame implements ActionListener, MouseListener 
         }
         if (e.getSource() == history){
             System.out.println("DO You Want to  Check History");
-            new HistoryScreen();
+            new HistoryScreen ();
         }
         if (e.getSource() == balance){
             System.out.println("DO You Want to Check Balance");
-            new BalanceScreen();
+            new BalanceScreen ();
         }
         if (e.getSource() == others){
             System.out.println("DO You Want to Check Balance");
-            new OthersScreen();
+            new OthersScreen ();
         }
     }
 
