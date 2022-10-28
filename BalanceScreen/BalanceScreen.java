@@ -56,6 +56,7 @@ public class BalanceScreen extends JFrame implements ActionListener {
         label5.setBackground(new Color(18,18,18));
         label5.setOpaque(true);
 
+
         JLabel label6 = new JLabel();
         label6.setText("₹ 42000     INR");
         label6.setForeground(Color.white);

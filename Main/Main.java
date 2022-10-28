@@ -3,6 +3,7 @@ package Main;
 import java.util.Scanner;
 import Login.*;
 import ThankYou.ThankYouScreen;
+import HistoryScreen.HistoryScreen;
 
 import OthersScreen.OthersScreen;
 
@@ -16,7 +17,7 @@ public class Main {
 //        IdPass idPass = new IdPass();
 //        LoginPage login = new LoginPage(idPass.getLoginInfo());
 
-        new OthersScreen();
+        new HistoryScreen();
 
     }
 }
