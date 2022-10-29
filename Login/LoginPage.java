@@ -1,13 +1,17 @@
 package Login;
 
 import HomeScreen.HomeScreen;
+import MongoDb.Auth;
+import MongoDb.Mongodb;
 import NewRegister.NewRegister;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class LoginPage implements ActionListener {
 
@@ -38,8 +42,7 @@ public class LoginPage implements ActionListener {
 
     HashMap<String,String> logininfo = new HashMap<String,String>();
 
-    public LoginPage(HashMap<String, String> loginInfoOriginal){
-        logininfo = loginInfoOriginal;
+    public LoginPage(){
 
         bg = new JLabel();
         bg.setSize(900,550);
@@ -56,7 +59,6 @@ public class LoginPage implements ActionListener {
         check.setForeground(Color.white);
         check.setBackground(Color.BLACK);
         check.setOpaque(true);
-
 
 
         label.setBounds(350,10,250,40);
@@ -138,7 +140,6 @@ public class LoginPage implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource() == resetButton){
             userIDField.setText("");
             userPassField.setText("");
@@ -148,23 +149,23 @@ public class LoginPage implements ActionListener {
         if (e.getSource() == loginButton){
             String userID = userIDField.getText();
             String Password = String.valueOf(userPassField.getPassword());
+            System.out.println ("User ID : " + userID + " Password : " + Password);
+            Auth auth = new Auth();
 
-            if (logininfo.containsKey(userID)){
-                if (logininfo.get(userID).equals(Password)){
 
-                    messageLabel.setForeground(Color.GREEN);
-                    messageLabel.setText("Login SuccessFull");
-                    frame.dispose();
-                    new HomeScreen();
-                }
-                else{
-                    messageLabel.setForeground(Color.RED);
-                    messageLabel.setText("Wrong Password");
-                }
+            if(Objects.equals (auth.Login (userID, Password), "success")){
+                messageLabel.setForeground(Color.GREEN);
+                messageLabel.setText("Login Successful");
+                frame.dispose();
+                HomeScreen homeScreen = new HomeScreen();
+            }
+            else if(Objects.equals (auth.Login (userID, Password), "failed")){
+                messageLabel.setForeground(Color.RED);
+                messageLabel.setText("Login Failed");
             }
             else{
                 messageLabel.setForeground(Color.RED);
-                messageLabel.setText("UserName Not Found");
+                messageLabel.setText("User Not Found");
             }
         }
         if (e.getSource()==newreg){

@@ -11,30 +11,34 @@ import java.util.Scanner;
 
 
 public class Mongodb {
+   static MongoClient client;
+    static MongoDatabase db;
+    static  MongoCollection<Document> Usercollection;
 
-    public static void main(String[] args) {
-        MongoClient client=MongoClients.create("mongodb+srv://magesh:0Cp1sIVfeEEpaz6w@cluster0.ntdwlch.mongodb.net/BankData?retryWrites=true&w=majority");
 
-        MongoDatabase db=client.getDatabase("BankData");
+    static Auth auth = new Auth();
+  public static  void connect() {
+         client=MongoClients.create("mongodb+srv://magesh:0Cp1sIVfeEEpaz6w@cluster0.ntdwlch.mongodb.net/BankData?retryWrites=true&w=majority");
 
-        Auth auth = new Auth();
+        db=client.getDatabase("BankData");
+
 
         //! collection
-        MongoCollection<Document> Usercollection=db.getCollection("testing");
-        // create user
-        //auth.AddNewUser ("itachi", "uchiha", Usercollection);
+        Usercollection=db.getCollection("testing");
 
-
-        // add total amount field to the magesh
-        Document foundUser =  Usercollection.find (eq ("username", "magesh")).first ();
-        if (foundUser != null) {
-            foundUser.append("total_amount", 100000);
-            Usercollection.updateOne(eq("username", "magesh"), new Document("$set", foundUser));
-        }
+    }
+    public Mongodb(){
+        connect();
+    }
+    public static void main (String[] args) {
+        auth.getUsersData ();
 
         // print all the data from the collection
-        auth.getUsersData(Usercollection);
-
         client.close();
     }
+
+    public  String LoginUser(String username, String password) {
+        return auth.Login (username, password);
+    }
+
 }

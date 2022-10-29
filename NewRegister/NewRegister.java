@@ -2,6 +2,7 @@ package NewRegister;
 
 import Login.IdPass;
 import Login.LoginPage;
+import MongoDb.Auth;
 
 import javax.swing.*;
 import java.awt.*;
@@ -127,7 +128,7 @@ public class NewRegister extends JFrame implements ActionListener {
         conftxt.setBounds(500,475,250,40);
 
 
-        loginButton = new JButton("Login");
+        loginButton = new JButton("Register");
         loginButton.setBounds(100,350,100,40);
         loginButton.setBackground(new Color(54,245,165));
         loginButton.setForeground(Color.BLACK);
@@ -182,16 +183,17 @@ public class NewRegister extends JFrame implements ActionListener {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
-
+    Auth auth=new Auth();
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == alacc){
             IdPass idPass = new IdPass();
-            LoginPage login = new LoginPage(idPass.getLoginInfo());
+            LoginPage login = new LoginPage();
+
             this.dispose();
         }
 
-        if (e.getSource() == resetButton){
+        else if (e.getSource() == resetButton){
             nametxt.setText("");
             phonetxt.setText("");
             pantxt.setText("");
@@ -199,5 +201,28 @@ public class NewRegister extends JFrame implements ActionListener {
             passtxt.setText("");
             conftxt.setText("");
         }
+        // register
+        else if(e.getSource ()== loginButton){
+            String name = nametxt.getText();
+            String phone = phonetxt.getText();
+            String pan = pantxt.getText();
+            String email = emailtxt.getText();
+            String pass = passtxt.getText();
+            String confpass = conftxt.getText();
+    // if pass not match then tell user to enter again
+            if(!pass.equals(confpass)){
+                JOptionPane.showMessageDialog(null,"Password not match");
+            }
+            else{
+                // if pass match then register
+                auth.RegisterUser(name,pass,pan,phone,email);
+                JOptionPane.showMessageDialog(null,"Registered Successfully");
+                IdPass idPass = new IdPass();
+                LoginPage login = new LoginPage();
+                this.dispose();
+            }
+
+        }
+
     }
 }
