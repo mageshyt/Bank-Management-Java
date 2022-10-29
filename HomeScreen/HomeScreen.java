@@ -3,6 +3,7 @@ package HomeScreen;
 
 import BalanceScreen.BalanceScreen;
 import HistoryScreen.HistoryScreen;
+import HistoryScreen2.HistoryScreen2;
 import OthersScreen.OthersScreen;
 import TransferScreen.TransferScreen;
 
@@ -149,7 +150,7 @@ public class HomeScreen extends JFrame implements ActionListener, MouseListener 
         }
         if (e.getSource() == history){
             System.out.println("DO You Want to  Check History");
-            new HistoryScreen ();
+            new HistoryScreen2 ();
         }
         if (e.getSource() == balance){
             System.out.println("DO You Want to Check Balance");

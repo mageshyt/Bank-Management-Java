@@ -216,7 +216,6 @@ public class NewRegister extends JFrame implements ActionListener {
                 // if pass match then register
                 auth.RegisterUser(name,pass,pan,phone,email);
                 JOptionPane.showMessageDialog(null,"Registered Successfully");
-                IdPass idPass = new IdPass();
                 LoginPage login = new LoginPage();
                 this.dispose();
             }
