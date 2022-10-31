@@ -14,7 +14,8 @@ public class Mongodb {
    static MongoClient client;
     static MongoDatabase db;
     static  MongoCollection<Document> Usercollection;
-
+    // ! transaction collection
+    static MongoCollection<Document> Transactioncollection;
 
     static Auth auth = new Auth();
   public static  void connect() {
@@ -22,23 +23,32 @@ public class Mongodb {
 
         db=client.getDatabase("BankData");
 
-
         //! collection
-        Usercollection=db.getCollection("testing");
+        Usercollection=db.getCollection("users");
+        Transactioncollection=db.getCollection("Transaction");
+
 
     }
     public Mongodb(){
         connect();
     }
     public static void main (String[] args) {
-        auth.getUsersData ();
+        Transaction transaction = new Transaction ();
 
-        // print all the data from the collection
+
+    auth.Login ("magesh", "magesh123");
+    //transaction.SendMoney ("8438829958",100);
+        transaction.getUserTransactions("magesh");
+        transaction.noOfTransactions ("magesh");
+//        auth.getUsersData ();
         client.close();
+
     }
 
     public  String LoginUser(String username, String password) {
+
         return auth.Login (username, password);
     }
+
 
 }

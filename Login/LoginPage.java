@@ -40,7 +40,6 @@ public class LoginPage implements ActionListener {
     ImageIcon image = new ImageIcon("Login/bglogin.png");
 
 
-    HashMap<String,String> logininfo = new HashMap<String,String>();
 
     public LoginPage(){
 

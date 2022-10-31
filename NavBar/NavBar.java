@@ -158,7 +158,6 @@ public class NavBar extends JFrame implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginbtn){
-            IdPass idPass = new IdPass();
             LoginPage login = new LoginPage();
         }
         if (e.getSource() == signupbtn){
