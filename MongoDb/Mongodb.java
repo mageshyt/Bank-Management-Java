@@ -7,6 +7,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -36,12 +37,18 @@ public class Mongodb {
         Transaction transaction = new Transaction ();
 
 
-    auth.Login ("magesh", "magesh123");
-    //transaction.SendMoney ("8438829958",100);
-        transaction.getUserTransactions("magesh");
-        transaction.noOfTransactions ("magesh");
-//        auth.getUsersData ();
+        ArrayList trans=transaction.getUserTransactions("magesh");
+        for (int i=0;i<trans.size();i++){
+            Document curr= (Document) trans.get(i);
+            if(curr.containsKey("date")){
+                System.out.println(curr.get("date"));
+            }
+        }
+        System.out.println(trans);
+   // auth.Login ("magesh", "magesh123");
         client.close();
+        // ! get date from document
+
 
     }
 
