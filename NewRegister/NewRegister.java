@@ -187,7 +187,6 @@ public class NewRegister extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == alacc){
-            IdPass idPass = new IdPass();
             LoginPage login = new LoginPage();
             this.dispose();
         }

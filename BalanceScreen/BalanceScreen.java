@@ -1,5 +1,6 @@
 package BalanceScreen;
 
+import HistoryScreen2.HistoryScreen2;
 import MongoDb.Auth;
 import MongoDb.Transaction;
 import TransferScreen.TransferScreen;
@@ -110,7 +111,7 @@ public class BalanceScreen extends JFrame implements ActionListener {
         // this is for no of transactions
         JLabel label11 = new JLabel();
         label11.setText(""+transfers);
-        label11.setForeground(Color.lightGray);
+        label11.setForeground(Color.white);
         label11.setBounds(670, 220, 100, 40);
         label11.setFont(new Font("Consolas", Font.PLAIN, 22));
         label11.setBackground(new Color(18, 18, 18));
@@ -151,7 +152,7 @@ public class BalanceScreen extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == b1) {
-            new TransferScreen();
+            new HistoryScreen2();
         }
     }
 }

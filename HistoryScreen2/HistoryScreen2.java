@@ -21,9 +21,6 @@ public class HistoryScreen2{
                 String balance= currentUser.get("balance").toString();
                 ImageIcon image=new ImageIcon("HistoryScreen2/Assets/Large.png");
                 ImageIcon image1=new ImageIcon("HistoryScreen2/Assets/cardframe.png");
-                ImageIcon image2=new ImageIcon("HistoryScreen2/Assets/Frame23.png");
-                ImageIcon image3=new ImageIcon("HistoryScreen2/Assets/image163.png");
-                ImageIcon image4=new ImageIcon("HistoryScreen2/Assets/image164.png");
 
 
                 JLabel label=new JLabel(); //! this is for welcome text
@@ -39,8 +36,6 @@ public class HistoryScreen2{
                 JLabel label10=new JLabel();
                 JLabel label11=new JLabel();
                 JLabel label12=new JLabel();
-                JLabel label13=new JLabel();
-                JLabel label14=new JLabel();
                 JLabel label15=new JLabel();
                 JLabel label16=new JLabel();
                 JLabel label17=new JLabel();
@@ -56,20 +51,6 @@ public class HistoryScreen2{
                 label6.add(label2);
                 label6.add(label3);
                 label6.add(label4);
-
-//                label11.setIcon(image2);
-//                label11.setBounds(504,133,61,42);
-//                label11.add(label13);
-//
-//                label12.setIcon(image2);
-//                label12.setBounds(504,194,61,42);
-//                label12.add(label14);
-//
-//                label13.setIcon(image3);
-//                label13.setBounds(11,8,43,25);
-//
-//                label14.setIcon(image4);
-//                label14.setBounds(11,8,43,25);
 
                 label.setText("Welcome back,");
                 label.setFont(new Font("Consolas", Font.BOLD,24));
@@ -139,13 +120,17 @@ public class HistoryScreen2{
         //! empty lable
             JLabel emptyLabel = new JLabel();
     for (Document tran : trans) {
-                    String amount = tran.get ("amount").toString ();
+        //String amount = tran.get ("amount").toString();
+                    String type = tran.get("type").toString();
+         // get date
+        String detail= "from "+tran.get("from").toString()+" to "+tran.get("to").toString();
 
-                    String type = tran.get("transType").toString ();
-                    String detail = "from " + tran.get ("from") + " to " + tran.get ("to");
-                    paymentDetail pay = new paymentDetail (type, amount, "Thu,oct 27", detail, 0, 0);
-                    pay.setBounds (504, 133 + count, 400, 42);
-                    frame.add (pay);
+       String date = tran.get("date").toString().substring(0,10);
+                    String amount = tran.get("amount").toString();
+                    paymentDetail pay = new paymentDetail(type, amount, date, detail, 0, 0);
+
+                    pay.setBounds(504, 133 + count, 400, 42);
+                    frame.add(pay);
                     count += 61;
             }
 
@@ -157,6 +142,7 @@ public class HistoryScreen2{
                 frame.setVisible(true);
                 frame.setLayout(null);
                 frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                frame.setLocationRelativeTo(null);
                 frame.setResizable(false);
                 frame.add(back);
                 frame.add(label21);

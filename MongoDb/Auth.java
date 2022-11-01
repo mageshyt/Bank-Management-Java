@@ -5,13 +5,17 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.bson.codecs.jsr310.LocalDateTimeCodec;
 import org.mindrot.jbcrypt.BCrypt;
 
+import javax.print.Doc;
 import java.security.PublicKey;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import static com.mongodb.client.model.Filters.eq;
-
-
+import static com.mongodb.client.model.Filters.geoWithinCenterSphere;
 
 
 public class Auth {
@@ -21,18 +25,27 @@ public class Auth {
     public static Document CurrentUser=new Document (
             "username", "hemanth"
     ).append (
-            "phone", "8438829958"
+            "phone", "8248512156"
     ).append (
             "password", "hema"
     ).append (
             "balance", 1000
-    );
+    ).append("isLocked",false);
     private String password;
 
     public Auth(){
         Mongodb mongodb = new Mongodb();
 
         Usercollection = mongodb.Usercollection;
+    }
+
+   public void getUserDetail(){
+        // get lockTime
+          Date data=CurrentUser.getDate("lockTime");
+            // format to local date time
+            LocalDateTime lockTime = data.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDateTime();
+
+
     }
 
     void getUsersData(){
@@ -59,28 +72,57 @@ public class Auth {
             return false;
         }
     }
-    void AddNewUser (String username, String user_password, MongoCollection<Document> collection) {
-        // ! hash the password before adding to the database
-        String hashedPassword = HashPassword (user_password);
-
-        // TODO : add new user to the collection
-        Document newUser = new Document ("username", username).append ("password", user_password);
-        //! check user is existed or not
-        Document UserExists = collection.find (eq ("username", username)).first ();
-        if (UserExists == null) {
-            collection.insertOne (newUser);
-            System.out.println ("User added");
-        } else {
-            System.out.println ("User already exists");
-        }
+    //! check user is locked or not
+    public boolean isLocked(){
+        //! check user is locked or not
+        return CurrentUser.getBoolean("islocked");
     }
 
+    public void LockTime(){
+        //! get lockTime
+        Date data=CurrentUser.getDate("lockTime");
+        // format to local date time
+        LocalDateTime lockTime = data.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDateTime();
+
+
+         // get in time HH:DD:YYY
+
+
+
+
+
+
+        //      //! get time and date  from lockTime
+        // int lockTimeMonth=lockTime.getMonthValue();
+        // int lockTimeDay=lockTime.getDayOfMonth();
+        // int lockTimeHour=lockTime.getHour();
+        // // get current time and find the difference
+        // LocalDateTime currentTime=LocalDateTime.now();
+        // int currentTimeMonth=currentTime.getMonthValue();
+        // int currentTimeDay=currentTime.getDayOfMonth();
+
+        // System.out.println("day "+lockTimeDay+ " "+ currentTimeDay);
+        // // check the difference form locktime and current time
+        // if(lockTimeDay > currentTimeDay && lockTimeMonth > currentTimeMonth){
+        //     System.out.println("difference hrs"+ lockTimeHour + " "+ currentTimeHour );
+
+        // }
+
+
+    }
     // Login in user
     public String Login(String username, String user_password){
         // TODO : check the user password
 
         Document foundUser =  Usercollection.find (eq ("username", username)).first ();
-        if(foundUser ==null) return "User not found"; String hashedPassword = foundUser.getString ("password");
+        // get isLocked boole from the user
+       // boolean isLocked = foundUser.getBoolean ("isLocked");
+        //if(isLocked){
+          //  System.out.println ("User is locked");
+           // return "User is locked";
+        //}
+
+        String hashedPassword = foundUser.getString ("password");
         System.out.println (hashedPassword+" user ");
             if (CheckPassword (user_password, hashedPassword)) {
                 System.out.println ("Login success");

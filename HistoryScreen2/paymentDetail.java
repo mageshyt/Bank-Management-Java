@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class paymentDetail extends JComponent{
 
-    public paymentDetail(String type, String amount, String data,String detail,int x,int y){
+    public paymentDetail(String type, String amount, String date,String detail,int x,int y){
         // ! frame
         //frame = new JFrame();
         ImageIcon rightArrow=new ImageIcon("HistoryScreen2/Assets/image163.png");
@@ -49,7 +49,7 @@ public class paymentDetail extends JComponent{
 
         // Date
         JLabel dateLabel=new JLabel();
-        dateLabel.setText(data);
+        dateLabel.setText(date);
         dateLabel.setBounds(255,10,124,24);
         dateLabel.setFont(new Font ("Consolas", Font.BOLD,10));
 

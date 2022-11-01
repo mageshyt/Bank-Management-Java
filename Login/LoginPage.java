@@ -60,7 +60,6 @@ public class LoginPage implements ActionListener {
         check.setOpaque(true);
 
 
-
         label.setBounds(350,10,250,40);
         label.setFont(new Font("Consolas",Font.BOLD,40));
         label.setForeground(new Color(54,245,165));

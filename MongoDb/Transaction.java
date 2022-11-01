@@ -57,7 +57,8 @@ public class Transaction {
         //! TODO : Transaction Doc
         Document TransactionDoc = new Document ("from", name).append ("to", username).append ("amount", amount);
 
-
+         // add date to the transaction
+        TransactionDoc.append ("date", new java.util.Date ().toString ());
 
         if(phoneno.equals (userNo)){
             System.out.println ("You can't send money to yourself");
@@ -85,18 +86,18 @@ public class Transaction {
     }
 
     public ArrayList getUserTransactions(String username){
-        //! create a transaction array and store all the tranaction in that
+        //! create a transaction array and store all the transactions in that
         ArrayList<Document> transactions = new ArrayList<Document> ();
         // TODO : get user transactions with the user name from and to
         for (Document document : Transactioncollection.find (eq ("from", username))) {
             //! send type to send
-            document.put ("transType", "send");
+            document.append ("type", "send");
             transactions.add (document);
         }
 
         for (Document document : Transactioncollection.find (eq ("to", username))) {
             //! send type to receive
-            document.put ("transType", "receive");
+            document.put ("type", "receive");
             transactions.add (document);
         }
 
@@ -107,7 +108,7 @@ public class Transaction {
         // TODO : get the number of transactions
         ArrayList transactions = getUserTransactions (username);
 
-        int count = transactions.size ();
+        int count = transactions.size();
 
         return count;
     }
