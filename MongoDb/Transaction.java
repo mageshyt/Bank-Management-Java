@@ -89,13 +89,15 @@ public class Transaction {
         ArrayList<Document> transactions = new ArrayList<Document> ();
         // TODO : get user transactions with the user name from and to
         for (Document document : Transactioncollection.find (eq ("from", username))) {
+            //! send type to send
+            document.put ("transType", "send");
             transactions.add (document);
-            System.out.println (document);
         }
 
         for (Document document : Transactioncollection.find (eq ("to", username))) {
+            //! send type to receive
+            document.put ("transType", "receive");
             transactions.add (document);
-            System.out.println (document);
         }
 
         return transactions;

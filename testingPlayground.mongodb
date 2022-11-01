@@ -7,11 +7,11 @@ use("BankData");
 // add 2 new users
 
 db.users.insert({
-    "username":"hemanth",
-    "password":"hema",
-    "email":"hemanth@gmail.com",
-    "phone":"8438829758",
-    "pan":"HEM2505",
+    "username":"Nabela",
+    "password":"nabi@123",
+    "email":"nabi@gmail.com",
+    "phone":"8125705745",
+    "pan":"NAB",
     "balance":50000
 
 })

@@ -159,7 +159,7 @@ public class LoginPage implements ActionListener {
                 frame.dispose();
                 HomeScreen homeScreen = new HomeScreen();
             }
-            else if(Objects.equals (auth.Login (userID, Password), "failed")){
+            else if(Objects.equals(auth.Login (userID, Password), "failed")){
                 messageLabel.setForeground(Color.RED);
                 messageLabel.setText("Login Failed");
             }
