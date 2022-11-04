@@ -14,24 +14,19 @@ import TestScreen.TestScreen;
 import ThankYou.ThankYouScreen;
 import TransferScreen.TransferScreen;
 
+import java.text.ParseException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 //        IdPass idPass = new IdPass();
 //        LoginPage loginPage = new LoginPage();
 //        NewRegister newRegister = new NewRegister();
 //        TransferScreen transferScreen = new TransferScreen();
         Auth auth = new Auth();
-        auth.Login("magesh", "magesh123");
-        if(auth.isLocked()){
-            System.out.println("User is locked");
-        }
-        else{
-            System.out.println("User is not locked");
-        }
-        auth.LockTime();
-        //auth.UpdateUserPassword ("hemanth","hema");
+     //String out=   auth.Login("magesh", "magesh123");
 
+        //System.out.println("out = " + out);
         // NewRegister newRegister = new NewRegister();
         // TransferScreen transferScreen = new TransferScreen();
        // Auth auth = new Auth();
@@ -42,6 +37,7 @@ public class Main {
         //HistoryScreen2 historyScreen2=new HistoryScreen2 ();
 
        // TestScreen testScreen= new TestScreen ();
+
 
     }
 }

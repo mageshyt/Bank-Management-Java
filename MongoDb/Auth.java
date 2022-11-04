@@ -1,42 +1,28 @@
 package MongoDb;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import org.bson.codecs.jsr310.LocalDateTimeCodec;
 import org.mindrot.jbcrypt.BCrypt;
 
-import javax.print.Doc;
-import java.security.PublicKey;
-import java.time.LocalDate;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 import static com.mongodb.client.model.Filters.eq;
-import static com.mongodb.client.model.Filters.geoWithinCenterSphere;
 
 
 public class Auth {
     //! get name from mongodb.java
     MongoCollection<Document> Usercollection;
+  public static   long waitingTime;
 
-    public static Document CurrentUser=new Document (
-            "username", "hemanth"
-    ).append (
-            "phone", "8248512156"
-    ).append (
-            "password", "hema"
-    ).append (
-            "balance", 1000
-    ).append("isLocked",false);
+    public static Document CurrentUser;
     private String password;
 
     public Auth(){
         Mongodb mongodb = new Mongodb();
 
-        Usercollection = mongodb.Usercollection;
+        Usercollection = Mongodb.Usercollection;
     }
 
    public void getUserDetail(){
@@ -44,8 +30,6 @@ public class Auth {
           Date data=CurrentUser.getDate("lockTime");
             // format to local date time
             LocalDateTime lockTime = data.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDateTime();
-
-
     }
 
     void getUsersData(){
@@ -78,49 +62,47 @@ public class Auth {
         return CurrentUser.getBoolean("islocked");
     }
 
-    public void LockTime(){
-        //! get lockTime
-        Date data=CurrentUser.getDate("lockTime");
+    public void LockUser(String username){
+        //! lock the user
+        Document foundUser =  Usercollection.find (eq ("username",username)).first ();
+        foundUser.put("islocked",true);
+        LocalDateTime lockTime = LocalDateTime.now().plusDays(1);
+        foundUser.put("lockTime",lockTime);
+        Usercollection.replaceOne (eq ("username",username),foundUser);
+
+
+    }
+
+    public long LockTime(Date date) throws ParseException {
         // format to local date time
-        LocalDateTime lockTime = data.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDateTime();
+        LocalDateTime lockTime = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDateTime();
+        // get current time
+        LocalDateTime currentTime = LocalDateTime.now();
+        // get difference hrs
+        long diff=java.time.Duration.between(currentTime, lockTime ).toHours();
 
-
-         // get in time HH:DD:YYY
-
-
-
-
-
-
-        //      //! get time and date  from lockTime
-        // int lockTimeMonth=lockTime.getMonthValue();
-        // int lockTimeDay=lockTime.getDayOfMonth();
-        // int lockTimeHour=lockTime.getHour();
-        // // get current time and find the difference
-        // LocalDateTime currentTime=LocalDateTime.now();
-        // int currentTimeMonth=currentTime.getMonthValue();
-        // int currentTimeDay=currentTime.getDayOfMonth();
-
-        // System.out.println("day "+lockTimeDay+ " "+ currentTimeDay);
-        // // check the difference form locktime and current time
-        // if(lockTimeDay > currentTimeDay && lockTimeMonth > currentTimeMonth){
-        //     System.out.println("difference hrs"+ lockTimeHour + " "+ currentTimeHour );
-
-        // }
+        return diff;
 
 
     }
     // Login in user
-    public String Login(String username, String user_password){
+    public String Login(String username, String user_password) throws ParseException {
         // TODO : check the user password
 
-        Document foundUser =  Usercollection.find (eq ("username", username)).first ();
+        Document foundUser =  Usercollection.find (eq ("username",username)).first ();
         // get isLocked boole from the user
-       // boolean isLocked = foundUser.getBoolean ("isLocked");
-        //if(isLocked){
-          //  System.out.println ("User is locked");
-           // return "User is locked";
-        //}
+        assert foundUser != null;
+        boolean isLocked = foundUser.getBoolean ("islocked");
+        if(isLocked){
+            waitingTime=LockTime(foundUser.getDate("lockTime"));
+            if(waitingTime>0){
+                return "locked";
+            }
+            else{
+                foundUser.put("islocked",false);
+                Usercollection.replaceOne (eq ("username",username),foundUser);
+            }
+        }
 
         String hashedPassword = foundUser.getString ("password");
         System.out.println (hashedPassword+" user ");
@@ -165,4 +147,7 @@ public class Auth {
             System.out.println ("User not found");
         }
     }
+
+
+
 }

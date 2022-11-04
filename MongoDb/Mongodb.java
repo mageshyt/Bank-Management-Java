@@ -7,6 +7,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -52,7 +53,7 @@ public class Mongodb {
 
     }
 
-    public  String LoginUser(String username, String password) {
+    public  String LoginUser(String username, String password) throws ParseException {
 
         return auth.Login (username, password);
     }
