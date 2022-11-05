@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -39,7 +40,7 @@ public class LoginPage implements ActionListener {
 
     ImageIcon image = new ImageIcon("Login/bglogin.png");
 
-
+    static int  attempts = 0;
 
     public LoginPage(){
 
@@ -150,21 +151,41 @@ public class LoginPage implements ActionListener {
             String Password = String.valueOf(userPassField.getPassword());
             System.out.println ("User ID : " + userID + " Password : " + Password);
             Auth auth = new Auth();
+            // result
 
+            try {
+                String result = auth.Login(userID,Password);
+                System.out.println("Result : " + result);
+                if(Objects.equals (result, "success")){
+                    messageLabel.setForeground(Color.GREEN);
+                    messageLabel.setText("Login Successful");
+                    frame.dispose();
+                    HomeScreen homeScreen = new HomeScreen();
+                }
+                else if(Objects.equals(result, "failed")){
+                    messageLabel.setForeground(Color.RED);
+                    messageLabel.setText("login password incorrect");
+                    attempts++;
+                    if(attempts == 3){
+                        auth.LockUser(userID);
 
-            if(Objects.equals (auth.Login (userID, Password), "success")){
-                messageLabel.setForeground(Color.GREEN);
-                messageLabel.setText("Login Successful");
-                frame.dispose();
-                HomeScreen homeScreen = new HomeScreen();
-            }
-            else if(Objects.equals(auth.Login (userID, Password), "failed")){
-                messageLabel.setForeground(Color.RED);
-                messageLabel.setText("Login Failed");
-            }
-            else{
-                messageLabel.setForeground(Color.RED);
-                messageLabel.setText("User Not Found");
+                    }
+                }
+                else if(Objects.equals(result, "locked")){
+                    messageLabel.setForeground(Color.RED);
+
+                    long reliseTime = Auth.waitingTime;
+                    // pop up
+                    JOptionPane.showMessageDialog(null,"Your Account is Locked for " + reliseTime + " hours","Account Locked",JOptionPane.ERROR_MESSAGE);
+                }
+
+                else{
+                    messageLabel.setForeground(Color.RED);
+                    messageLabel.setText("User Not Found");
+                }
+
+            } catch (ParseException ex) {
+                throw new RuntimeException(ex);
             }
         }
         if (e.getSource()==newreg){
