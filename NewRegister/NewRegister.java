@@ -129,7 +129,7 @@ public class NewRegister extends JFrame implements ActionListener {
 
 
         loginButton = new JButton("Register");
-        loginButton.setBounds(100,350,100,40);
+        loginButton.setBounds(50,350,150,40);
         loginButton.setBackground(new Color(54,245,165));
         loginButton.setForeground(Color.BLACK);
         loginButton.setFont(new Font("Consolas",Font.BOLD,20));
