@@ -7,6 +7,7 @@ import HistoryScreen.HistoryScreen;
 import HistoryScreen2.HistoryScreen2;
 import Login.IdPass;
 import Login.LoginPage;
+import Login.forgetpass;
 import MongoDb.Auth;
 import NewRegister.NewRegister;
 import OthersScreen.OthersScreen;
@@ -19,11 +20,12 @@ import java.text.ParseException;
 public class Main {
 
     public static void main(String[] args) throws ParseException {
-//        IdPass idPass = new IdPass();
-//        LoginPage loginPage = new LoginPage();
+        IdPass idPass = new IdPass();
+        LoginPage loginPage = new LoginPage();
+//        new forgetpass();
 //        NewRegister newRegister = new NewRegister();
 //        TransferScreen transferScreen = new TransferScreen();
-        Auth auth = new Auth();
+//        Auth auth = new Auth();
      //String out=   auth.Login("magesh", "magesh123");
 
         //System.out.println("out = " + out);
