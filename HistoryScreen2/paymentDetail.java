@@ -17,7 +17,7 @@ public class paymentDetail extends JComponent{
         // Amount lable
         JLabel amountLabel=new JLabel();
         amountLabel.setText(amount);
-        amountLabel.setBounds(350,10,100,17);
+        amountLabel.setBounds(350,10,150,17);
         amountLabel.setFont(new Font ("Consolas", Font.BOLD,16));
 
         //  right Arrow

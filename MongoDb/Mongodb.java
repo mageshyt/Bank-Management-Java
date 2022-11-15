@@ -37,25 +37,12 @@ public class Mongodb {
     public static void main (String[] args) {
         Transaction transaction = new Transaction ();
 
-
-        ArrayList trans=transaction.getUserTransactions("magesh");
-        for (int i=0;i<trans.size();i++){
-            Document curr= (Document) trans.get(i);
-            if(curr.containsKey("date")){
-                System.out.println(curr.get("date"));
-            }
-        }
-        System.out.println(trans);
    // auth.Login ("magesh", "magesh123");
+        auth.UpdateUserPassword("soorya","soorya123");
         client.close();
         // ! get date from document
 
 
-    }
-
-    public  String LoginUser(String username, String password) throws ParseException {
-
-        return auth.Login (username, password);
     }
 
 

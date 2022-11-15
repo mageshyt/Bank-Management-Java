@@ -152,7 +152,11 @@ public class LoginPage implements ActionListener {
             System.out.println ("User ID : " + userID + " Password : " + Password);
             Auth auth = new Auth();
             // result
-
+            // if both are empty
+            if (userID.isEmpty() && Password.isEmpty()){
+                messageLabel.setText("Please Enter User ID and Password");
+                messageLabel.setForeground(Color.red);
+            }
             try {
                 String result = auth.Login(userID,Password);
                 System.out.println("Result : " + result);
