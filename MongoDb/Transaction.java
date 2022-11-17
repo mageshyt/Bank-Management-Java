@@ -112,4 +112,30 @@ public class Transaction {
 
         return count;
     }
+
+    // ! others payment
+
+    public  String payOthers(int amount,String type,String number){
+
+        Document CurrentUser = auth.CurrentUser;
+
+        String name = CurrentUser.getString ("username");
+         int balance =CurrentUser.getInteger ("balance");
+        // ! get balance from the user
+        if(balance >= amount) {
+            balance -= amount;
+            CurrentUser.put ("balance", balance);
+            // decrease the balance from the current user
+            Usercollection.updateOne (eq ("username", name), new Document ("$set", CurrentUser));
+
+            // add transaction to the collection
+            Document TransactionDoc= new Document ("from", name).append ("to", type).append("amount", amount).append (type,number);
+            Transactioncollection.insertOne (TransactionDoc);
+            return "success";
+        }
+        else{
+            System.out.println ("Not enough money");
+            return "insufficient balance";
+        }
+    }
 }

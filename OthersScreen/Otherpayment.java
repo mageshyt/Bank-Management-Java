@@ -1,4 +1,5 @@
 package OthersScreen;
+import MongoDb.Transaction;
 import OthersScreen.*;
 import java.awt.*;
 import javax.swing.*;
@@ -11,6 +12,7 @@ public class Otherpayment extends  JFrame implements ActionListener {
     JButton b1;
     String name,inputname;
     JLabel namelabel;
+    JTextField  t2;
     public Otherpayment(String name,String inputname){
 
         this.name = name;
@@ -27,11 +29,6 @@ public class Otherpayment extends  JFrame implements ActionListener {
         namelabel.setFont(new Font("Consolas",1,40));
         namelabel.setForeground(Color.white);
 
-        JLabel label2=new JLabel();
-        label2.setText("Phone bill");
-        label2.setBounds(60,56,300,54);
-        label2.setFont(new Font("Consolas", Font.BOLD,46));
-        //label.add(label2);
 
         JLabel label5=new JLabel();
         label5.setText("Pay your bill on time");
@@ -41,7 +38,7 @@ public class Otherpayment extends  JFrame implements ActionListener {
 
         JLabel label6=new JLabel();
         label6.setText(inputname)   ;
-        label6.setBounds(487,166,123,29);
+        label6.setBounds(487,166,250,29);
         label6.setFont(new Font("Inter", Font.BOLD,24));
 
         JLabel label8=new JLabel();
@@ -57,7 +54,7 @@ public class Otherpayment extends  JFrame implements ActionListener {
         t1.setBackground(new Color(224,241,255));
         t1.setBorder(new LineBorder(new Color(224,241,255),4));
 
-        JTextField t2=new JTextField();
+        t2=new JTextField();
         t2.setPreferredSize(new Dimension(250,40));
         t2.setFont(new Font("Inter",Font.PLAIN,35));
         t2.setBackground(new Color(224,241,255));
@@ -94,7 +91,14 @@ public class Otherpayment extends  JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == b1){
-
+            Transaction tran= new Transaction ();
+          String res=  tran.payOthers (Integer.parseInt (t2.getText ()),name,inputname);
+          if(res.equals ("success")){
+              JOptionPane.showMessageDialog (null,"Payment Successful");
+          }
+          else{
+              JOptionPane.showMessageDialog (null,"Payment Failed");
+          }
         }
     }
 }
