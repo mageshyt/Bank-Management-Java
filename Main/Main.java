@@ -1,7 +1,7 @@
 package Main;
 
 import Login.LoginPage;
-
+import OthersScreen.*;
 import BalanceScreen.BalanceScreen;
 import HistoryScreen.HistoryScreen;
 import HistoryScreen2.HistoryScreen2;
@@ -20,8 +20,9 @@ import java.text.ParseException;
 public class Main {
 
     public static void main(String[] args) throws ParseException {
-        IdPass idPass = new IdPass();
-        LoginPage loginPage = new LoginPage();
+//        IdPass idPass = new IdPass();
+//        LoginPage loginPage = new LoginPage();
+        new Otherpayment();
 //        new forgetpass();
 //        NewRegister newRegister = new NewRegister();
 //        TransferScreen transferScreen = new TransferScreen();

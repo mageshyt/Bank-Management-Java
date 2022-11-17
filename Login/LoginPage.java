@@ -1,9 +1,9 @@
 package Login;
 
-import HomeScreen.HomeScreen;
-import MongoDb.Auth;
-import MongoDb.Mongodb;
-import NewRegister.NewRegister;
+import HomeScreen.*;
+import MongoDb.*;
+import MongoDb.*;
+import NewRegister.*;
 
 
 import javax.swing.*;
@@ -181,7 +181,7 @@ public class LoginPage implements ActionListener {
             new NewRegister();
             frame.dispose();
         }
-        if (e.getSource()==newreg){
+        if (e.getSource()==forget){
             new forgetpass();
         }
     }

@@ -1,10 +1,11 @@
 package OthersScreen;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class OthersScreen extends JFrame {
-    public OthersScreen(){
+public class OthersScreen extends JFrame implements ActionListener {
                 JLabel label=new JLabel();
                 JLabel label6=new JLabel();
                 JLabel label7=new JLabel();
@@ -23,8 +24,7 @@ public class OthersScreen extends JFrame {
                 ImageIcon image5=new ImageIcon("OthersScreen/Assets/image19.png");
                 ImageIcon image6=new ImageIcon("OthersScreen/Assets/image16.png");
 
-                label.setIcon(image);
-                label.setBounds(0,0,370,550);
+
 
                 JButton b1 = new JButton();
                 JButton b2 = new JButton();
@@ -32,6 +32,10 @@ public class OthersScreen extends JFrame {
                 JButton b4 = new JButton();
                 JButton b5 = new JButton();
                 JButton b6 = new JButton();
+    public OthersScreen(){
+
+        label.setIcon(image);
+        label.setBounds(0,0,370,550);
 
                 b1.setIcon(image1);
                 b1.setBounds(415,88,97,111);
@@ -127,7 +131,25 @@ public class OthersScreen extends JFrame {
                 add(b5);
                 add(b6);
             }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == b1){
+            new Otherpayment();
         }
+        if(e.getSource() == b2){
+            new Otherpayment();
+        }if(e.getSource() == b3){
+            new Otherpayment();
+        }if(e.getSource() == b4){
+            new Otherpayment();
+        }if(e.getSource() == b5){
+            new Otherpayment();
+        }if(e.getSource() == b6){
+            new Otherpayment();
+        }
+    }
+}
 
 
 

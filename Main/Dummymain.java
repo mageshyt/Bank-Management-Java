@@ -1,6 +1,6 @@
 package Main;
 
-import NavBar.NavBar;
+import NavBar.*;
 
 public class Dummymain {
     public static void main(String[] args) {
