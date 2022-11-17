@@ -14,14 +14,15 @@ import OthersScreen.OthersScreen;
 import TestScreen.TestScreen;
 import ThankYou.ThankYouScreen;
 import TransferScreen.TransferScreen;
+import validations.EmailValidation;
 
 import java.text.ParseException;
 
 public class Main {
 
     public static void main(String[] args) throws ParseException {
-        IdPass idPass = new IdPass();
-        LoginPage loginPage = new LoginPage();
+//        IdPass idPass = new IdPass();
+//        LoginPage loginPage = new LoginPage();
 //        new forgetpass();
 //        NewRegister newRegister = new NewRegister();
 //        TransferScreen transferScreen = new TransferScreen();
@@ -29,7 +30,7 @@ public class Main {
      //String out=   auth.Login("magesh", "magesh123");
 
         //System.out.println("out = " + out);
-        // NewRegister newRegister = new NewRegister();
+         NewRegister newRegister = new NewRegister();
         // TransferScreen transferScreen = new TransferScreen();
        // Auth auth = new Auth();
         //auth.UpdateUserPassword ("Nabela", "nabi@123");
@@ -37,8 +38,8 @@ public class Main {
         //ThankYouScreen thankYouScreen = new ThankYouScreen();
 //         HistoryScreen historyScreen = new HistoryScreen();
         //HistoryScreen2 historyScreen2=new HistoryScreen2 ();
+       // forgetpass fo=new forgetpass ();
 
-       // TestScreen testScreen= new TestScreen ();
 
 
     }

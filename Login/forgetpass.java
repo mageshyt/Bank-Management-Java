@@ -4,6 +4,8 @@ import HomeScreen.HomeScreen;
 import MongoDb.Auth;
 import MongoDb.Mongodb;
 import NewRegister.NewRegister;
+import validations.PanValidation;
+import validations.PasswordValidation;
 
 
 import javax.swing.*;
@@ -121,45 +123,30 @@ public class forgetpass implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //! if conform and password not match then show error
+        String pass = newpassField.getText();
+        String confpass = confpassfield.getText();
+        String pan = panField.getText();
 
-//        if (e.getSource() == loginButton){
-//                       // result
-//
-//            try {
-//                String result = auth.Login(userID,Password);
-//                System.out.println("Result : " + result);
-//                if(Objects.equals (result, "success")){
-//                    messageLabel.setForeground(Color.GREEN);
-//                    messageLabel.setText("Login Successful");
-//                    frame.dispose();
-//                    HomeScreen homeScreen = new HomeScreen();
-//                }
-//                else if(Objects.equals(result, "failed")){
-//                    messageLabel.setForeground(Color.RED);
-//                    messageLabel.setText("login password incorrect");
-//                    attempts++;
-//                    if(attempts == 3){
-//                        auth.LockUser(userID);
-//
-//                    }
-//                }
-//                else if(Objects.equals(result, "locked")){
-//                    messageLabel.setForeground(Color.RED);
-//
-//                    long reliseTime = Auth.waitingTime;
-//                    // pop up
-//                    JOptionPane.showMessageDialog(null,"Your Account is Locked for " + reliseTime + " hours","Account Locked",JOptionPane.ERROR_MESSAGE);
-//                }
-//
-//                else{
-//                    messageLabel.setForeground(Color.RED);
-//                    messageLabel.setText("User Not Found");
-//                }
-//
-//            } catch (ParseException ex) {
-//                throw new RuntimeException(ex);
-//            }
-        //}
+        // validation for password
+        if(!PasswordValidation.isValid (pass)){
+            messageLabel.setText("Invalid Password");
+            messageLabel.setForeground(Color.RED);
+            return;
+        }
+
+        // validation for pan
+        if(!PanValidation.isValid (pan)){
+            messageLabel.setText("Invalid Pan");
+            messageLabel.setForeground(Color.RED);
+            return;
+        }
+
+        if(!pass.equals (confpass)){
+            // show error popup
+            JOptionPane.showMessageDialog(null, "Password and Confirm Password not match");
+
+        }
 
     }
 }
