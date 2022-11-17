@@ -185,7 +185,7 @@ public class LoginPage implements ActionListener {
             new NewRegister();
             frame.dispose();
         }
-        if (e.getSource()==newreg){
+        if (e.getSource()==forget){
             new forgetpass();
         }
     }

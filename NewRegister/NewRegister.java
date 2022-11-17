@@ -3,6 +3,10 @@ package NewRegister;
 import Login.IdPass;
 import Login.LoginPage;
 import MongoDb.Auth;
+import validations.EmailValidation;
+import validations.PanValidation;
+import validations.PasswordValidation;
+import validations.PhoneValidation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -207,6 +211,26 @@ public class NewRegister extends JFrame implements ActionListener {
             String email = emailtxt.getText();
             String pass = passtxt.getText();
             String confpass = conftxt.getText();
+
+            // empty fields
+            if(name.equals("") || phone.equals("") || pan.equals("") || email.equals("") || pass.equals("") || confpass.equals("")){
+                JOptionPane.showMessageDialog(null, "One or More Fields are Empty");
+            }
+
+            //! validations for mail , phone ,pan , password
+            if(!EmailValidation.isValid (email)){
+                JOptionPane.showMessageDialog(null, "Invalid Email");
+            }
+            if(!PhoneValidation.isValid (phone)){
+                JOptionPane.showMessageDialog(null, "Invalid Phone Number");
+            }
+            if(!PanValidation.isValid (pan)){
+                JOptionPane.showMessageDialog(null, "Invalid Pan Number");
+            }
+            if(!PasswordValidation.isValid (pass)){
+                JOptionPane.showMessageDialog(null, "Invalid Password");
+            }
+
     // if pass not match then tell user to enter again
             if(!pass.equals(confpass)){
                 JOptionPane.showMessageDialog(null,"Password not match");
