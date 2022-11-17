@@ -1,43 +1,37 @@
 package OthersScreen;
-
+import OthersScreen.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Otherpayment{
-    public Otherpayment(){
-        JFrame frame= new JFrame();
+public class Otherpayment extends  JFrame implements ActionListener {
+    JButton b1;
+    String name,inputname;
+    JLabel namelabel;
+    public Otherpayment(String name,String inputname){
 
-        ImageIcon image=new ImageIcon("bc 1.png");
-        ImageIcon image1=new ImageIcon("image 167.png");
-        ImageIcon image2=new ImageIcon("Frame27.png");
-        ImageIcon image3=new ImageIcon("Frame29.png");
+        this.name = name;
+        this.inputname=inputname;
+
+        ImageIcon image=new ImageIcon("OthersScreen/payimg.png");
 
         JLabel label=new JLabel();
         label.setIcon(image);
         label.setBounds(0,0,556,550);
 
-        JLabel label1=new JLabel();
-        label1.setIcon(image1);
-        label1.setBounds(21,170,327,287);
-        label.add(label1);
+        namelabel=new JLabel(name);
+        namelabel.setBounds(100,70,225,54);
+        namelabel.setFont(new Font("Consolas",1,40));
+        namelabel.setForeground(Color.white);
 
         JLabel label2=new JLabel();
         label2.setText("Phone bill");
         label2.setBounds(60,56,300,54);
         label2.setFont(new Font("Consolas", Font.BOLD,46));
         //label.add(label2);
-
-        JLabel label3=new JLabel();
-        label3.setIcon(image2);
-        label3.setBounds(21,170,327,287);
-        label.add(label3);
-
-        JLabel label4=new JLabel();
-        label4.setIcon(image3);
-        label4.setBounds(63,56,301,75);
-        label.add(label4);
 
         JLabel label5=new JLabel();
         label5.setText("Pay your bill on time");
@@ -46,7 +40,7 @@ public class Otherpayment{
         label5.setForeground(new Color(70,69,95));
 
         JLabel label6=new JLabel();
-        label6.setText("Phone no:");
+        label6.setText(inputname)   ;
         label6.setBounds(487,166,123,29);
         label6.setFont(new Font("Inter", Font.BOLD,24));
 
@@ -71,19 +65,36 @@ public class Otherpayment{
         t2.setBounds(487,325,385,42);
         t2.setBorder(new LineBorder(new Color(224,241,255),4));
 
-        frame.setTitle("OtherPayment Page");
-        frame.setSize(900,550);
-        frame.getContentPane().setBackground(new Color(255,255,255));
-        frame.setVisible(true);
-        frame.setLayout(null);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.add(label);
-        frame.add(label5);
-        frame.add(label6);
-        frame.add(t1);
-        frame.add(t2);
-        frame.add(label8);
+        b1 = new JButton("Pay Now");
+        b1.setBounds(487,400,385,42);
+        b1.setBackground(Color.red);
+        b1.setOpaque(true);
+        b1.setFont(new Font("Consolas",1,25));
+        b1.addActionListener(this);
 
+        setTitle("OtherPayment Page");
+        setSize(900,550);
+        getContentPane().setBackground(new Color(255,255,255));
+        setVisible(true);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        add(namelabel);
+        add(label);
+        add(label5);
+        add(label6);
+        add(b1);
+        add(t1);
+        add(t2);
+        add(label8);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == b1){
+
+        }
     }
 }
