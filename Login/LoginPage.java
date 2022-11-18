@@ -1,9 +1,9 @@
 package Login;
 
-import HomeScreen.HomeScreen;
-import MongoDb.Auth;
-import MongoDb.Mongodb;
-import NewRegister.NewRegister;
+import HomeScreen.*;
+import MongoDb.*;
+import MongoDb.*;
+import NewRegister.*;
 
 
 import javax.swing.*;

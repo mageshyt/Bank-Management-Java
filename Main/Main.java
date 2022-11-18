@@ -1,7 +1,7 @@
 package Main;
 
 import Login.LoginPage;
-
+import OthersScreen.*;
 import BalanceScreen.BalanceScreen;
 import HistoryScreen.HistoryScreen;
 import HistoryScreen2.HistoryScreen2;
@@ -23,6 +23,7 @@ public class Main {
     public static void main(String[] args) throws ParseException {
 //        IdPass idPass = new IdPass();
 //        LoginPage loginPage = new LoginPage();
+        new Otherpayment("phone bill","phone no");
 //        new forgetpass();
 //        NewRegister newRegister = new NewRegister();
 //        TransferScreen transferScreen = new TransferScreen();
@@ -30,7 +31,7 @@ public class Main {
      //String out=   auth.Login("magesh", "magesh123");
 
         //System.out.println("out = " + out);
-         NewRegister newRegister = new NewRegister();
+        // NewRegister newRegister = new NewRegister();
         // TransferScreen transferScreen = new TransferScreen();
        // Auth auth = new Auth();
         //auth.UpdateUserPassword ("Nabela", "nabi@123");
