@@ -123,8 +123,7 @@ public class Auth {
     public void RegisterUser(String username, String user_password,String pan, String phone, String email){
         // TODO : add new user to the collection
         String hashedPassword = HashPassword (user_password);
-        Document newUser = new Document ("username", username).append ("password", hashedPassword).append ("pan", pan).append ("phone", phone).append ("email", email).append ("balance", 0)
-                .append("islocked",false);
+        Document newUser = new Document ("username", username).append ("password", hashedPassword).append ("pan", pan).append ("phone", phone).append ("email", email).append ("balance", 0);
         //! check user is existed or not
         Document UserExists = Usercollection.find (eq ("username", username)).first ();
         if (UserExists == null) {

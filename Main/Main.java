@@ -1,6 +1,7 @@
 package Main;
 
 import Login.LoginPage;
+import MongoDb.Transaction;
 import OthersScreen.*;
 import BalanceScreen.BalanceScreen;
 import HistoryScreen.HistoryScreen;
@@ -23,12 +24,13 @@ public class Main {
     public static void main(String[] args) throws ParseException {
 //        IdPass idPass = new IdPass();
 //        LoginPage loginPage = new LoginPage();
-        new Otherpayment("phone bill","phone no");
+        Auth auth = new Auth();
+       // new Otherpayment("phone bill","phone no");
 //        new forgetpass();
 //        NewRegister newRegister = new NewRegister();
-//        TransferScreen transferScreen = new TransferScreen();
+       // TransferScreen transferScreen = new TransferScreen();
 //        Auth auth = new Auth();
-     //String out=   auth.Login("magesh", "magesh123");
+       auth.Login ("magesh", "Magesh@123");
 
         //System.out.println("out = " + out);
         // NewRegister newRegister = new NewRegister();
@@ -40,8 +42,8 @@ public class Main {
 //         HistoryScreen historyScreen = new HistoryScreen();
         //HistoryScreen2 historyScreen2=new HistoryScreen2 ();
        // forgetpass fo=new forgetpass ();
-
-
-
+     OthersScreen othersScreen=new OthersScreen ();
+//    Transaction tran= new Transaction ();
+//    tran.payOthers (299,"phone","9080950109");
     }
 }

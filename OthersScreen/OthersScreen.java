@@ -84,7 +84,7 @@ public class OthersScreen extends JFrame implements ActionListener {
         b6.addActionListener(this);
 
 
-        label6.setText("Choose your Payment");
+                label6.setText("Choose your Payment");
                 label6.setBackground(Color.white);
                 label6.setFont(new Font("Consolas", Font.BOLD,25));
                 label6.setBounds(500,30,300,25);
@@ -152,17 +152,19 @@ public class OthersScreen extends JFrame implements ActionListener {
 
         }
         if(e.getSource() == b3){
-            new Otherpayment("Landline bill","landline no");
+            System.out.println ("Water bill");
+            new Otherpayment("Water bill","meter no");
 
         }
         if(e.getSource() == b4){
-            new Otherpayment("Water bill","meter no");
+            new Otherpayment("Car bill","Car no");
         }
         if(e.getSource() == b5){
-            new Otherpayment("Car Insurance bill","car no");
+            new Otherpayment("Landline bill","phone no");
         }
         if(e.getSource() == b6){
-            new Otherpayment("Cylinder bill","gas no");
+
+            new Otherpayment("Gas bill","gas no");
         }
     }
 }

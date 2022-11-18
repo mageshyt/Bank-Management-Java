@@ -4,21 +4,9 @@
 use("BankData");
 
 
-// add 2 new users
+// get user schema
 
-db.users.insert({
-    "username":"Nabela",
-    "password":"nabi@123",
-    "email":"nabi@gmail.com",
-    "phone":"8125705745",
-    "pan":"NAB",
-    "balance":50000
-
-})
+db.Transaction.find().pretty();
 
 
-
-db.users.find({
-  
-})
 
