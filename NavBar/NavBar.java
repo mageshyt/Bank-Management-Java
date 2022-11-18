@@ -66,9 +66,6 @@ public class NavBar extends JFrame implements ActionListener, MouseListener {
         homebtn.addActionListener(this);
         homebtn.addMouseListener(this);
 
-
-
-
         aboutbtn = new JButton("About");
         aboutbtn.setBounds(225,25,100,30);
         aboutbtn.setForeground(Color.white);
@@ -79,8 +76,6 @@ public class NavBar extends JFrame implements ActionListener, MouseListener {
         aboutbtn.addActionListener(this);
         aboutbtn.addMouseListener(this);
 
-
-
         servicesbtn = new JButton("Services");
         servicesbtn.setBounds(325,25,130,30);
         servicesbtn.setForeground(Color.white);
@@ -90,7 +85,6 @@ public class NavBar extends JFrame implements ActionListener, MouseListener {
         servicesbtn.setFocusable(false);
         servicesbtn.addActionListener(this);
         servicesbtn.addMouseListener(this);
-
 
         supportbtn = new JButton("Support");
         supportbtn.setBounds(455,25,115,30);
@@ -133,7 +127,6 @@ public class NavBar extends JFrame implements ActionListener, MouseListener {
         signupbtn.addMouseListener(this);
 
 
-
         this.addMouseListener(this);
         this.add(homebtn);
         this.add(aboutbtn);
@@ -152,8 +145,6 @@ public class NavBar extends JFrame implements ActionListener, MouseListener {
         this.setLocationRelativeTo(null);
 
     }
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {

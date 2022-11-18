@@ -129,7 +129,7 @@ public class Transaction {
             Usercollection.updateOne (eq ("username", name), new Document ("$set", CurrentUser));
 
             // add transaction to the collection
-            Document TransactionDoc= new Document ("from", name).append ("to", type).append("amount", amount).append (type,number);
+            Document TransactionDoc= new Document ("from", name).append ("to", type).append("amount", amount).append (type,number).append("date", new java.util.Date ().toString ());
             Transactioncollection.insertOne (TransactionDoc);
             return "success";
         }

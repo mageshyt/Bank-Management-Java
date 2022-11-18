@@ -1,7 +1,6 @@
 package MongoDb;
 
-import com.mongodb.client.MongoCollection;
-import org.bson.Document;
+import com.mongodb.client.MongoCollection; import org.bson.Document;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.text.ParseException;
@@ -147,7 +146,5 @@ public class Auth {
             System.out.println ("User not found");
         }
     }
-
-
 
 }

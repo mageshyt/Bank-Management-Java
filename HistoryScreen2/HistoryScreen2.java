@@ -64,7 +64,7 @@ public class HistoryScreen2{
                 label2.setBounds(72,144,100,17);
                 label2.setFont(new Font("Consolas", Font.BOLD,14));
 
-                label3.setText("$ "+balance);
+                label3.setText("₹ "+balance);
                 label3.setBounds(79,171,150,29);
                 label3.setFont(new Font("Consolas", Font.BOLD,24));
 
@@ -89,7 +89,7 @@ public class HistoryScreen2{
                 label9.setFont(new Font("Consolas", Font.BOLD,10));
 
                 label10.setText("amount");
-                label10.setBounds(850,106,100,12);
+                label10.setBounds(850,106,200,12);
                 label10.setFont(new Font("Consolas", Font.BOLD,10));
 
 
@@ -100,7 +100,7 @@ public class HistoryScreen2{
 
                         // back btn
                 back=new JButton("Back");
-                back.setBounds(10,10,80,35);
+                back.setBounds(10,0,80,25);
                 //! round border
 
 

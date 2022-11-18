@@ -3,6 +3,7 @@ package NewRegister;
 import Login.IdPass;
 import Login.LoginPage;
 import MongoDb.Auth;
+import MongoDb.DuplicateCheck;
 import validations.EmailValidation;
 import validations.PanValidation;
 import validations.PasswordValidation;
@@ -215,20 +216,44 @@ public class NewRegister extends JFrame implements ActionListener {
             // empty fields
             if(name.equals("") || phone.equals("") || pan.equals("") || email.equals("") || pass.equals("") || confpass.equals("")){
                 JOptionPane.showMessageDialog(null, "One or More Fields are Empty");
-            }
+            }else{
 
             //! validations for mail , phone ,pan , password
             if(!EmailValidation.isValid (email)){
                 JOptionPane.showMessageDialog(null, "Invalid Email");
+                return;
             }
             if(!PhoneValidation.isValid (phone)){
                 JOptionPane.showMessageDialog(null, "Invalid Phone Number");
+                return;
             }
             if(!PanValidation.isValid (pan)){
                 JOptionPane.showMessageDialog(null, "Invalid Pan Number");
+                return;
             }
             if(!PasswordValidation.isValid (pass)){
                 JOptionPane.showMessageDialog(null, "Invalid Password");
+                return;
+            }
+
+
+            //! duplicate email , phone , pan,name
+                DuplicateCheck duplicateCheck = new DuplicateCheck();
+                if(duplicateCheck.isDuplicate(name,"username")){
+                    JOptionPane.showMessageDialog(null, "Name Already Exists");
+                    return;
+                }
+            if(duplicateCheck.isDuplicate(email,"email")){
+                JOptionPane.showMessageDialog(null, "Email Already Exists");
+                return;
+            }
+            if(duplicateCheck.isDuplicate(phone,"phone")){
+                JOptionPane.showMessageDialog(null, "Phone Number Already Exists");
+                return;
+            }
+            if(duplicateCheck.isDuplicate(pan,"pan")){
+                JOptionPane.showMessageDialog(null, "Pan Number Already Exists");
+                return;
             }
 
     // if pass not match then tell user to enter again
@@ -241,9 +266,9 @@ public class NewRegister extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(null,"Registered Successfully");
                 LoginPage login = new LoginPage();
                 this.dispose();
+
             }
-
         }
-
+        }
     }
 }

@@ -1,6 +1,7 @@
 package TransferScreen;
 
 import MongoDb.Transaction;
+import ThankYou.ThankYouScreen;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -113,6 +114,7 @@ public class TransferScreen extends JFrame implements ActionListener {
                     label6.setBounds(294, 383, 200, 24);
 
                     dispose();
+                    new ThankYouScreen();
                     break;
                 case "User not found":
                     JOptionPane.showMessageDialog(null, "User not found");

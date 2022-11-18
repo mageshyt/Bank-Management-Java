@@ -1,6 +1,8 @@
 package OthersScreen;
 import MongoDb.Transaction;
 import OthersScreen.*;
+import ThankYou.ThankYouScreen;
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -95,6 +97,8 @@ public class Otherpayment extends  JFrame implements ActionListener {
           String res=  tran.payOthers (Integer.parseInt (t2.getText ()),name,inputname);
           if(res.equals ("success")){
               JOptionPane.showMessageDialog (null,"Payment Successful");
+              this.dispose ();
+              new ThankYouScreen();
           }
           else{
               JOptionPane.showMessageDialog (null,"Payment Failed");

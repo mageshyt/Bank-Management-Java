@@ -84,7 +84,7 @@ public class HomeScreen extends JFrame implements ActionListener, MouseListener 
 
 
         balance = new JButton("Balance");
-        balance.setBounds(600,240,250,60);
+        balance.setBounds(600,160,250,60);
         balance.setFont(new Font("Consolas",Font.BOLD,25));
         balance.setForeground(Color.cyan);
         balance.setFocusable(false);
@@ -95,7 +95,7 @@ public class HomeScreen extends JFrame implements ActionListener, MouseListener 
 
 
         history = new JButton("History");
-        history.setBounds(600,320,250,60);
+        history.setBounds(600,240,250,60);
         history.setFont(new Font("Consolas",Font.BOLD,25));
         history.setForeground(Color.cyan);
         history.setFocusable(false);
@@ -105,7 +105,7 @@ public class HomeScreen extends JFrame implements ActionListener, MouseListener 
         history.addMouseListener(this);
 
         others = new JButton("Others");
-        others.setBounds(600,400,250,60);
+        others.setBounds(600,320,250,60);
         others.setFont(new Font("Consolas",Font.BOLD,25));
         others.setForeground(Color.cyan);
         others.setFocusable(false);
@@ -131,7 +131,6 @@ public class HomeScreen extends JFrame implements ActionListener, MouseListener 
         label.add(transfer);
         label.add(balance);
         label.add(history);
-        label.add(withdraw);
         label.add(others);
         label.add(label2);
 

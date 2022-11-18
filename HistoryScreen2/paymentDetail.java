@@ -13,13 +13,11 @@ public class paymentDetail extends JComponent{
 
         ImageIcon background=new ImageIcon("HistoryScreen2/Assets/Frame23.png");
 
-
+        System.out.println("Amount is "+amount);
         // Amount lable
         JLabel amountLabel=new JLabel();
         amountLabel.setText(amount);
-        amountLabel.setBounds(350,10,150,17);
-        amountLabel.setFont(new Font ("Consolas", Font.BOLD,16));
-
+        amountLabel.setBounds(350,10,200,25);
         //  right Arrow
         JLabel rightArrowLabel=new JLabel();
         rightArrowLabel.setIcon(rightArrow);

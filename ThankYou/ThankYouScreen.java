@@ -1,4 +1,6 @@
 package ThankYou;
+import HomeScreen.HomeScreen;
+
 import javax.swing.*;
 import java.awt.*;
 public class ThankYouScreen extends JFrame {
@@ -45,6 +47,10 @@ public class ThankYouScreen extends JFrame {
                 setVisible(true);
                 setLocationRelativeTo(null);
                 setResizable(false);
+                b1.addActionListener(e -> {
+                    dispose();
+                    new HomeScreen();
+                });
                 add(label1);
                 add(label);
                 add(label2);

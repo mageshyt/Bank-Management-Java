@@ -1,6 +1,7 @@
 package Main;
 
 import Login.LoginPage;
+import MongoDb.DuplicateCheck;
 import MongoDb.Transaction;
 import OthersScreen.*;
 import BalanceScreen.BalanceScreen;
@@ -28,22 +29,17 @@ public class Main {
        // new Otherpayment("phone bill","phone no");
 //        new forgetpass();
 //        NewRegister newRegister = new NewRegister();
-       // TransferScreen transferScreen = new TransferScreen();
 //        Auth auth = new Auth();
-       auth.Login ("magesh", "Magesh@123");
+       auth.Login ("hemanth", "hema");
 
-        //System.out.println("out = " + out);
-        // NewRegister newRegister = new NewRegister();
-        // TransferScreen transferScreen = new TransferScreen();
-       // Auth auth = new Auth();
-        //auth.UpdateUserPassword ("Nabela", "nabi@123");
-       // BalanceScreen balanceScreen = new BalanceScreen();
-        //ThankYouScreen thankYouScreen = new ThankYouScreen();
-//         HistoryScreen historyScreen = new HistoryScreen();
-        //HistoryScreen2 historyScreen2=new HistoryScreen2 ();
-       // forgetpass fo=new forgetpass ();
-     OthersScreen othersScreen=new OthersScreen ();
-//    Transaction tran= new Transaction ();
-//    tran.payOthers (299,"phone","9080950109");
+        //TransferScreen transferScreen = new TransferScreen();
+        ThankYouScreen thankYouScreen = new ThankYouScreen();
+
+        DuplicateCheck duplicateCheck = new DuplicateCheck();
+      if (duplicateCheck.isDuplicate("magesh", "username")) {
+            System.out.println("Duplicate");
+        } else {
+            System.out.println("Not Duplicate");
+        }
     }
 }
