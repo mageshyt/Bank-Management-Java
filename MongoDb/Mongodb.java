@@ -21,7 +21,7 @@ public class Mongodb {
 
     static Auth auth = new Auth();
   public static  void connect() {
-         client=MongoClients.create("mongodb+srv://magesh:0Cp1sIVfeEEpaz6w@cluster0.ntdwlch.mongodb.net/BankData?retryWrites=true&w=majority");
+         client=MongoClients.create("");
 
         db=client.getDatabase("BankData");
 
